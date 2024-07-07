@@ -9,16 +9,16 @@ const repositoryPlugin = require("./repositories/repositoryPlugin");
  * @param {*} options
  */
 async function app(fastify, options) {
-  fastify.register(require("@fastify/cors"));
+  await fastify.register(require("@fastify/cors"));
 
-  fastify.register(todoRoutes, { prefix: "/todos" });
+  await fastify.register(todoRoutes, { prefix: "/todos" });
   //   register test routes
-  fastify.register(require("./routes/api/apiRoutes"), {
+  await fastify.register(require("./routes/api/apiRoutes"), {
     prefix: "/api",
   });
 
-  fastify.register(repositoryPlugin);
-  fastify.register(servicePlugin);
+  await fastify.register(repositoryPlugin);
+  await fastify.register(servicePlugin);
 }
 
 module.exports = fastifyPlugin(app);

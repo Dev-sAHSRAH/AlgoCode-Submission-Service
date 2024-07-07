@@ -1,4 +1,4 @@
-const testController = require("../../../../controllers/testControllers");
+const testController = require("../../../../controllers/submissionController");
 
 async function testRoute(fastify, options) {
   fastify.get("/ping", testController.pingRequest);
